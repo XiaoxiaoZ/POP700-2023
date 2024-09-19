@@ -52,7 +52,7 @@ class PlayerAlgorithmInterface(ABC):
         """Determines the next move for the player.
         
         Args:
-            game (TicTacToeInterface): The current game state.
+            game (ChessGameInterface): The current game state.
         
         Returns:
             int: The position (0-8) where the player will place their marker.
