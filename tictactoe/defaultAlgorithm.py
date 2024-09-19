@@ -22,7 +22,6 @@ class HumanPlayer(PlayerAlgorithmInterface):
             except ValueError:
                 print("Invalid input. Please enter a number between 0 and 8.")
 
-
 class MinimaxAlgorithm(PlayerAlgorithmInterface):
     def __init__(self, marker: str):
         super().__init__(marker)
