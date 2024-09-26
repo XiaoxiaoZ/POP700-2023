@@ -1,3 +1,4 @@
+import math
 from typing import List, Self
 from sortableInterface import Campare, Sortable, display
 from algorithms import bubble_sort, heap_sort, insertion_sort, quick_sort, selection_sort
@@ -27,6 +28,44 @@ class Human(Campare,display):
     def print(self):
         print("age:"+str(self.age)+",height:"+str(self.height))
 
+class StringData(Campare,display):
+    def __init__(self, data: str):
+        self.data=data
+    def compare(self, item: Self) -> bool:
+        return len(self.data)> len(item.data)
+    def print(self):
+        print("Length of :"+self.data+" is"+ str(len(self.data)))
+
+bubble_sort(SortableData([StringData("12323"),StringData("12"),StringData("1"),StringData("122313")])).print()
+
+class Rectangle(Campare, display):
+    def __init__(self, width:float, height:float):
+        self.width = width
+        self.height = height
+        self.area = width* height
+    def compare(self, item: Self) -> bool:
+        return self.width<item.width
+    def print(self):
+        print("Area of rectangle with width "+str(self.width)+" and height " +str(self.height)+" is "+str(self.area))
+
+bubble_sort(SortableData([Rectangle(45,90),Rectangle(10,10),Rectangle(2,2),Rectangle(100,1)])).print()
+class DNA(Campare, display):
+    def __init__(self, data: List[int]):
+        self.data = data
+    def ones(self)->int:
+        return self.data.count(1)
+    def zeros(self)->int:
+        return self.data.count(0)
+    def qua_diff(self):
+        return abs(self.ones()-self.zeros())
+    def compare(self, item: Self) -> bool:
+        return len(self.data)<len(item.data)
+    def print(self):
+        print(self.data)
+
+bubble_sort(SortableData([DNA([0,0,1,1,1,1,1,1]),DNA([1,1,1,1,0,0,0]),DNA([1,1,1,1,0,0,0,0,0,0,0]),DNA([1,1,1,1,0,0,0,1,1,1,1,1,1,1])])).print()
+
+"""
 print("bubble sort")
 bubble_sort(SortableData([Human(10,100),Human(20,180),Human(12, 200),Human(32, 200),Human(22, 200),Human(24, 200)])).print()
 print("selection sort")
@@ -38,7 +77,7 @@ heap_sort(SortableData([Human(10,100),Human(20,180),Human(12, 200),Human(32, 200
 print("quick sort")
 quick_sort(SortableData([Human(10,100),Human(20,180),Human(12, 200),Human(32, 200),Human(22, 200),Human(24, 200)])).print()
 
-
+"""
 # string, sort based on length
 # rectangle, sort based on area
 # [0,1,0,1,1,1,1] type of binary list, sort based on the quantitative difference of 1 and 0
