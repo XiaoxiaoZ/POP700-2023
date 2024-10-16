@@ -12,77 +12,18 @@ import random
 class Ant(IAnt):
     def __init__(self, environment: IEnvironment):
         self.environment = environment
-        self.tour = []  # The current path the ant is following
-        self.visited = set()  # Track visited cities
-
+    """ YOU NEED TO FIX THIS CLASS"""
     def initialize(self):
-        # Start the ant at a random city
-        self.tour = []
-        self.visited = set()
-        start_city = random.choice(self.environment.get_cities())
-        self.tour.append(start_city)
-        self.visited.add(start_city)
+        pass
 
     def move(self):
-        print(self.environment.get_cities())
-        if len(self.tour) < len(self.environment.get_cities()):
-            current_city = self.tour[-1]
-            next_city = self._choose_next_city(current_city)
-            if next_city is not None:
-                self.tour.append(next_city)
-                self.visited.add(next_city)
+        pass
 
     def has_found_goal(self):
-
-        # The ant has found the goal if it has visited all cities
-        return len(self.tour) == len(self.environment.get_cities())
+        pass
 
     def deposit_pheromone(self):
-        # Deposit pheromone along the path taken by the ant
-        for i in range(len(self.tour) - 1):
-            city1 = self.tour[i]
-            city2 = self.tour[i + 1]
-            distance = self.environment.get_distance(city1, city2)
-            # Deposit pheromone inversely proportional to the distance of the tour
-            self.environment.update_pheromone(city1, city2, 1 / distance)
-
-    def _choose_next_city(self, current_city):
-        # Get the cities that have not been visited yet
-        unvisited_cities = set(self.environment.get_cities()) - self.visited
-        if not unvisited_cities:
-            return None  # No more cities to visit
-        
-        # Compute probabilities based on pheromone levels and distances
-        probabilities = []
-        total_sum = 0
-
-        for city in unvisited_cities:
-            pheromone_level = self.environment.get_pheromone_level(current_city, city)
-            distance = self.environment.get_distance(current_city, city)
-            if distance == 0:
-                distance = 0.00001  # Avoid division by zero
-
-            desirability = (pheromone_level ** 2) * (1 / distance)  # Typical formula: pheromone^alpha * (1/distance)^beta
-            probabilities.append((city, desirability))
-            total_sum += desirability
-
-        if total_sum == 0:
-            return random.choice(list(unvisited_cities))  # If all probabilities are 0, randomly choose a city
-
-        # Normalize probabilities
-        probabilities = [(city, desirability / total_sum) for city, desirability in probabilities]
-
-        # Select next city using roulette wheel selection
-        return self._roulette_wheel_selection(probabilities)
-
-    def _roulette_wheel_selection(self, probabilities):
-        r = random.random()
-        cumulative_sum = 0.0
-        for city, probability in probabilities:
-            cumulative_sum += probability
-            if r <= cumulative_sum:
-                return city
-        return probabilities[-1][0]  # Return the last city as a fallback
+        pass
 
 
 class AntColonyAlgorithm(IAntColonyAlgorithm):

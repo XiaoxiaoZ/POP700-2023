@@ -42,7 +42,7 @@ class Environment(IEnvironment):
 
     def get_cities(self):
         # Return the list of city indices (0, 1, 2, ...)
-        return list(range(len(self.cities)))
+        return self.cities
 
     def get_distance(self, city1, city2):
         # Return the distance between two cities

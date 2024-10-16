@@ -17,7 +17,7 @@ class IEnvironment:
         """Return the distance between two cities"""
         pass
     def get_cities(self):
-        """Return the list of cityies)"""
+        """Return the list of cityies"""
 
 class IAnt:
     def initialize(self):
