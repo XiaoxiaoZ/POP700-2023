@@ -12,6 +12,7 @@ import random
 class Ant(IAnt):
     def __init__(self, environment: IEnvironment):
         self.environment = environment
+        self.tour = []
     """ YOU NEED TO FIX THIS CLASS"""
     def initialize(self):
         pass

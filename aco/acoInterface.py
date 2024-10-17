@@ -20,6 +20,7 @@ class IEnvironment:
         """Return the list of cityies"""
 
 class IAnt:
+    tour=[]
     def initialize(self):
         pass
 
